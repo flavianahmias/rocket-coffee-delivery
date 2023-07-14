@@ -1,0 +1,9 @@
+.content {
+  height: calc(100vh - 60px);
+  background-color: blue;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}

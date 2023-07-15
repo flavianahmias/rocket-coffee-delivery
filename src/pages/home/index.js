@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../../components/header";
 import styles from "./styles.module.scss";
 import { ReactComponent as CoffeeImage } from "../../assets/images/Imagem.svg";
+import Card from "../../components/card";
 
 function Home() {
   return (
@@ -28,7 +29,9 @@ function Home() {
       <section className={styles.catalog}>
         <h1> Nossos cafés</h1>
 
-        <div>cafes</div>
+        <div>
+          <Card />
+        </div>
       </section>
     </div>
   );

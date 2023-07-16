@@ -28,5 +28,11 @@
 
   .catalog {
     border-top: 1px solid red;
+
+    .coffelist {
+      flex-wrap: wrap;
+      display: flex;
+      gap: 1rem;
+    }
   }
 }

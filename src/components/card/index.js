@@ -46,7 +46,7 @@ function Card(props) {
           </div>
           <button
             className={styles.buyButton}
-            onClick={() => props.addProduct({ ...props.coffee, quantity: quantity })}
+            onClick={() => props.addProduct(props.coffee, quantity)}
           >
             <BsFillCartFill />
           </button>

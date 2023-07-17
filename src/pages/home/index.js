@@ -12,8 +12,8 @@ import { increment } from "../../features/cart/cartSlice";
 function Home() {
   const count = useSelector((state) => state.cart.value.length);
   const dispatch = useDispatch();
-  const handleClickAddProduct = (coffee) => {
-    dispatch(increment(coffee));
+  const handleClickAddProduct = (coffee, quantity) => {
+    dispatch(increment({ product: coffee, quantity: quantity }));
   };
 
   return (
@@ -37,7 +37,7 @@ function Home() {
         <CoffeeImage />
       </section>
       <section className={styles.catalog}>
-        <h1> Nossos cafés {}</h1>
+        <h1> Nossos cafés </h1>
 
         <div className={styles.coffelist}>
           {coffeeList.map((c, index) => {

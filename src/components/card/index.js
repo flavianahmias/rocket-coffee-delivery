@@ -12,6 +12,8 @@ function Card(props) {
   const count = useSelector((state) => state.cart.value);
   const dispatch = useDispatch();
 
+  const [quantity, setQuantity] = React.useState(1);
+
   //https://www.figma.com/file/9voOXFDUMIRJxFzTKhzC5p/Coffee-Delivery-%E2%80%A2-Desafio-React-(Copy)?node-id=220%3A1450&mode=dev
 
   return (
@@ -36,11 +38,16 @@ function Card(props) {
 
         <div className={styles.actions}>
           <div className={styles.counter}>
-            <button onClick={() => dispatch(decrement())}>-</button>
-            <span>1</span>
-            <button onClick={() => dispatch(increment())}>+</button>
+            <button onClick={() => setQuantity(quantity - 1)} disabled={quantity === 1}>
+              -
+            </button>
+            <span>{quantity}</span>
+            <button onClick={() => setQuantity(quantity + 1)}>+</button>
           </div>
-          <button className={styles.buyButton} onClick={() => props.addProduct(id)}>
+          <button
+            className={styles.buyButton}
+            onClick={() => props.addProduct({ ...props.coffee, quantity: quantity })}
+          >
             <BsFillCartFill />
           </button>
         </div>

@@ -37,14 +37,30 @@
       }
     }
 
-    .car {
+    .cart {
       background-color: #f1e9c9;
       border: none;
       padding: 8px;
       border-radius: 6px;
+      position: relative;
 
       svg {
         fill: #c47f17;
+      }
+
+      .cartValue {
+        position: absolute;
+        background: #c47f17;
+        border-radius: 10px;
+        color: #f1e9c9;
+        width: 10px;
+        height: 10px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        font-size: 7px;
+        top: -0.2rem;
+        right: -0.2rem;
       }
     }
   }

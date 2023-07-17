@@ -5,9 +5,15 @@ import { ReactComponent as CoffeeImage } from "../../assets/images/Imagem.svg";
 import Card from "../../components/card";
 import { coffeeList } from "./content";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { increment } from "../../features/cart/cartSlice";
+
 function Home() {
-  const handleClickAddProduct = (id) => {
-    console.log(id);
+  const count = useSelector((state) => state.cart.value.length);
+  const dispatch = useDispatch();
+  const handleClickAddProduct = (coffee) => {
+    dispatch(increment(coffee));
   };
 
   return (
@@ -30,13 +36,12 @@ function Home() {
 
         <CoffeeImage />
       </section>
-
       <section className={styles.catalog}>
-        <h1> Nossos cafés</h1>
+        <h1> Nossos cafés {}</h1>
 
         <div className={styles.coffelist}>
-          {coffeeList.map((c) => {
-            return <Card coffee={c} addProduct={handleClickAddProduct} />;
+          {coffeeList.map((c, index) => {
+            return <Card key={index} coffee={c} addProduct={handleClickAddProduct} />;
           })}
         </div>
       </section>

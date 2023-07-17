@@ -1,0 +1,38 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+
+  .initial {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .text {
+      // width: 600px;
+
+      h1 {
+        font-size: 38px;
+      }
+
+      span {
+        font-size: 20px;
+      }
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: 200px 200px;
+    }
+  }
+
+  .catalog {
+    border-top: 1px solid red;
+
+    .coffelist {
+      flex-wrap: wrap;
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}

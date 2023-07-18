@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles.module.scss";
 import { TfiMoney } from "react-icons/tfi";
 import { GrLocation } from "react-icons/gr";
+import { BsTrash } from "react-icons/bs";
 import { CiMoneyCheck1 } from "react-icons/ci";
 import { PiMoneyThin } from "react-icons/pi";
 import { TbMoneybag } from "react-icons/tb";
@@ -18,6 +19,10 @@ function Cart() {
   const cartList = useSelector((state) => state.cart.value);
 
   const [payMethodSelected, setPayMethodSelected] = React.useState();
+
+  const changeQuantity = () => {
+    return;
+  };
 
   return (
     <div className={styles.content}>
@@ -74,15 +79,21 @@ function Cart() {
         <div className={styles.coffees}>
           {cartList.map((coffee, index) => {
             return (
-              <div className={styles.coffeeListItem}>
+              <div className={styles.coffeeListItem} key={index}>
                 <img src={coffee.product.image} />
                 <div className={styles.item}>
                   <div className={styles.itemTitle}>
                     <p>{coffee.product.name}</p> <p>{coffee.product.value}</p>
                   </div>
                   <div className={styles.itemActions}>
-                    <CounterButton quantity={1} />
-                    <button>REMOVER</button>
+                    <CounterButton
+                      quantity={coffee.quantity}
+                      setQuantity={changeQuantity}
+                    />
+                    <button className={styles.removeButton}>
+                      <BsTrash />
+                      REMOVER
+                    </button>
                   </div>
                 </div>
               </div>

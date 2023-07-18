@@ -8,12 +8,10 @@ import Cart from "./pages/cart";
 export const Content = () => {
   return (
     <div className={styles.content}>
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="cart" element={<Cart />} />
-        </Routes>
-      </Router>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="cart" element={<Cart />} />
+      </Routes>
     </div>
   );
 };
@@ -21,8 +19,10 @@ export const Content = () => {
 function App() {
   return (
     <div className={styles.main}>
-      <Header />
-      <Content />
+      <Router>
+        <Header />
+        <Content />
+      </Router>
     </div>
   );
 }

@@ -1,0 +1,13 @@
+.counter {
+  display: flex;
+  gap: 8px;
+  background-color: #e6e5e5;
+
+  button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #4b2995;
+    border-radius: 8px;
+  }
+}

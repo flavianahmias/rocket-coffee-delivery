@@ -6,6 +6,7 @@ import { CiMoneyCheck1 } from "react-icons/ci";
 import { PiMoneyThin } from "react-icons/pi";
 import { TbMoneybag } from "react-icons/tb";
 import { useSelector, useDispatch } from "react-redux";
+import CounterButton from "../../components/counterButton";
 
 function Cart() {
   const payMethod = [
@@ -80,7 +81,7 @@ function Cart() {
                     <p>{coffee.product.name}</p> <p>{coffee.product.value}</p>
                   </div>
                   <div className={styles.itemActions}>
-                    <button>-/+</button>
+                    <CounterButton quantity={1} />
                     <button>REMOVER</button>
                   </div>
                 </div>

@@ -5,6 +5,7 @@ import Coffee from "../../assets/images/coffee.png";
 
 import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "../../features/cart/cartSlice";
+import CounterButton from "../counterButton";
 
 function Card(props) {
   const { name, image, tags, value, description, id } = props.coffee;
@@ -37,13 +38,7 @@ function Card(props) {
         </span>
 
         <div className={styles.actions}>
-          <div className={styles.counter}>
-            <button onClick={() => setQuantity(quantity - 1)} disabled={quantity === 1}>
-              -
-            </button>
-            <span>{quantity}</span>
-            <button onClick={() => setQuantity(quantity + 1)}>+</button>
-          </div>
+          <CounterButton quantity={quantity} setQuantity={setQuantity} />
           <button
             className={styles.buyButton}
             onClick={() => props.addProduct(props.coffee, quantity)}

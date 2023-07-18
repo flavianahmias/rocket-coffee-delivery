@@ -8,8 +8,11 @@ import { PiMoneyThin } from "react-icons/pi";
 import { TbMoneybag } from "react-icons/tb";
 import { useSelector, useDispatch } from "react-redux";
 import CounterButton from "../../components/counterButton";
+import { decrement, incrementInCart } from "../../features/cart/cartSlice";
 
 function Cart() {
+  const dispatch = useDispatch();
+
   const payMethod = [
     { id: 0, icon: <CiMoneyCheck1 />, text: "CARTÃO DE CRÉDITO" },
     { id: 1, icon: <TbMoneybag />, text: "CARTÃO DE DÉBITO" },
@@ -20,8 +23,8 @@ function Cart() {
 
   const [payMethodSelected, setPayMethodSelected] = React.useState();
 
-  const changeQuantity = () => {
-    return;
+  const changeQuantity = (quantity, id) => {
+    dispatch(incrementInCart({ quantity: quantity, id: id }));
   };
 
   return (
@@ -87,10 +90,14 @@ function Cart() {
                   </div>
                   <div className={styles.itemActions}>
                     <CounterButton
+                      id={coffee.product.id}
                       quantity={coffee.quantity}
                       setQuantity={changeQuantity}
                     />
-                    <button className={styles.removeButton}>
+                    <button
+                      className={styles.removeButton}
+                      onClick={() => dispatch(decrement(coffee.product.id))}
+                    >
                       <BsTrash />
                       REMOVER
                     </button>

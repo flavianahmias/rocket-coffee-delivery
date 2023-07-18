@@ -9,6 +9,7 @@ import { TbMoneybag } from "react-icons/tb";
 import { useSelector, useDispatch } from "react-redux";
 import CounterButton from "../../components/counterButton";
 import { decrement, incrementInCart } from "../../features/cart/cartSlice";
+import CartListItem from "../../components/cartListItem";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -25,6 +26,10 @@ function Cart() {
 
   const changeQuantity = (quantity, id) => {
     dispatch(incrementInCart({ quantity: quantity, id: id }));
+  };
+
+  const removeItem = (id) => {
+    dispatch(decrement(id));
   };
 
   return (
@@ -82,28 +87,12 @@ function Cart() {
         <div className={styles.coffees}>
           {cartList.map((coffee, index) => {
             return (
-              <div className={styles.coffeeListItem} key={index}>
-                <img src={coffee.product.image} />
-                <div className={styles.item}>
-                  <div className={styles.itemTitle}>
-                    <p>{coffee.product.name}</p> <p>{coffee.product.value}</p>
-                  </div>
-                  <div className={styles.itemActions}>
-                    <CounterButton
-                      id={coffee.product.id}
-                      quantity={coffee.quantity}
-                      setQuantity={changeQuantity}
-                    />
-                    <button
-                      className={styles.removeButton}
-                      onClick={() => dispatch(decrement(coffee.product.id))}
-                    >
-                      <BsTrash />
-                      REMOVER
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <CartListItem
+                key={index}
+                coffee={coffee}
+                changeQuantity={changeQuantity}
+                removeItem={removeItem}
+              />
             );
           })}
         </div>

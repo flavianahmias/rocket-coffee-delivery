@@ -24,7 +24,7 @@ export const coffeeList = [
     image: "../../assets/images/coffee.png",
   },
   {
-    id: 3,
+    id: 4,
     name: "Expresso cremoso",
     tags: ["tradicional"],
     description: "Café expresso tradicional com espuma cremosa",

@@ -1,7 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: [],
+  value: [
+    {
+      product: {
+        id: 11,
+        name: "Expresso tradicional",
+        tags: ["tradicional"],
+        description: "O tradicional café feito com água quente e grãos moídos",
+        value: "9,90",
+        image: "./src/assets/images/coffee.png",
+      },
+      quantity: 2,
+    },
+  ],
 };
 
 export const cartSlice = createSlice({

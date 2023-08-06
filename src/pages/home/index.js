@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../../components/header";
 import styles from "./styles.module.scss";
 import { ReactComponent as CoffeeImage } from "../../assets/images/Imagem.svg";
 import Card from "../../components/card";
@@ -15,6 +14,13 @@ function Home() {
     dispatch(increment({ product: coffee, quantity: quantity }));
   };
 
+  const sloganPoints = [
+    { id: "compra", icon: <BsFillCartFill />, text: "Compra simples e segura" },
+    { id: "entrega", icon: <BiTimer />, text: "Entrega rápida e rastreada" },
+    { id: "embalagem", icon: <BsBoxSeam />, text: "Embalagem mantém o café intacto" },
+    { id: "cafe", icon: <BiCoffee />, text: "O café chega fresquinho até você" },
+  ];
+
   return (
     <div className={styles.homepage}>
       <section className={styles.initial}>
@@ -26,21 +32,14 @@ function Home() {
           </span>
 
           <div className={styles.details}>
-            <p>
-              <BsFillCartFill />
-              Compra simples e segura
-            </p>
-            <p>
-              <BiTimer />
-              Entrega rápida e rastreada
-            </p>
-            <p>
-              <BsBoxSeam />
-              Embalagem mantém o café intacto
-            </p>
-            <p>
-              <BiCoffee />O café chega fresquinho até você
-            </p>
+            {sloganPoints.map((s, i) => {
+              return (
+                <div key={i} className={s.id}>
+                  {s.icon}
+                  <p>{s.text}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
 

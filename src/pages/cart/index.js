@@ -12,6 +12,7 @@ import { decrement, incrementInCart } from "../../features/cart/cartSlice";
 import CartListItem from "../../components/cartListItem";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { getCEP } from "../../services/cep-service";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -48,6 +49,12 @@ function Cart() {
   const handleConfirmButton = (data) => {
     navigate("/finish");
   };
+
+  useEffect(() => {
+    getCEP(69055161, (response) => {
+      console.log(response);
+    });
+  }, []);
 
   return (
     <div className={styles.content}>

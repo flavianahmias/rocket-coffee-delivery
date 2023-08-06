@@ -11,6 +11,7 @@ import CounterButton from "../../components/counterButton";
 import { decrement, incrementInCart } from "../../features/cart/cartSlice";
 import CartListItem from "../../components/cartListItem";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 function Cart() {
   const dispatch = useDispatch();
@@ -27,6 +28,14 @@ function Cart() {
   const [payMethodSelected, setPayMethodSelected] = React.useState();
   const [value, setValue] = React.useState(0.0);
 
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
+
   const changeQuantity = (quantity, id) => {
     dispatch(incrementInCart({ quantity: quantity, id: id }));
   };
@@ -41,7 +50,7 @@ function Cart() {
     });
   };
 
-  const handleConfirmButton = () => {
+  const handleConfirmButton = (data) => {
     navigate("/finish");
   };
 
@@ -59,15 +68,47 @@ function Cart() {
             </div>
           </div>
 
-          <div className={styles.inputs}>
-            <input type="text" placeholder="CEP" />
-            <input type="text" placeholder="Rua" style={{ width: "100%" }} />
-            <input type="text" placeholder="Numero" />
-            <input type="text" placeholder="Complemento (opcional)" />
-            <input type="text" placeholder="Bairro" style={{ width: "30%" }} />
-            <input type="text" placeholder="Cidade" style={{ width: "30%" }} />
-            <input type="text" placeholder="UF" style={{ width: "10%" }} />
-          </div>
+          <form className={styles.inputs} onSubmit={handleSubmit(handleConfirmButton)}>
+            <input
+              defaultValue=""
+              placeholder="CEP"
+              {...register("CEP", { required: true })}
+            />
+            <input
+              type="text"
+              placeholder="Rua"
+              style={{ width: "100%" }}
+              {...register("rua", { required: true })}
+            />
+            <input
+              type="text"
+              placeholder="Numero"
+              {...register("numero", { required: true })}
+            />
+            <input
+              type="text"
+              placeholder="Complemento (opcional)"
+              {...register("complemento")}
+            />
+            <input
+              type="text"
+              placeholder="Bairro"
+              style={{ width: "30%" }}
+              {...register("bairro", { required: true })}
+            />
+            <input
+              type="text"
+              placeholder="Cidade"
+              style={{ width: "30%" }}
+              {...register("cidade", { required: true })}
+            />
+            <input
+              type="text"
+              placeholder="UF"
+              style={{ width: "10%" }}
+              {...register("uf", { required: true })}
+            />
+          </form>
         </div>
         <div className={styles.paymentInputs}>
           <div className={styles.label}>
@@ -123,7 +164,7 @@ function Cart() {
             </div>
           </div>
 
-          <button className={styles.confirm} onClick={() => handleConfirmButton()}>
+          <button className={styles.confirm} onClick={handleSubmit(handleConfirmButton)}>
             Confirmar pedido
           </button>
         </div>

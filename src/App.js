@@ -4,6 +4,7 @@ import Home from "./pages/home";
 import Header from "./components/header";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Cart from "./pages/cart";
+import FinishPage from "./pages/finish";
 
 export const Content = () => {
   return (
@@ -11,6 +12,7 @@ export const Content = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="cart" element={<Cart />} />
+        <Route exact path="finish" element={<FinishPage />} />
       </Routes>
     </div>
   );

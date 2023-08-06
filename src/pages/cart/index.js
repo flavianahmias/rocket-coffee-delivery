@@ -10,9 +10,11 @@ import { useSelector, useDispatch } from "react-redux";
 import CounterButton from "../../components/counterButton";
 import { decrement, incrementInCart } from "../../features/cart/cartSlice";
 import CartListItem from "../../components/cartListItem";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const payMethod = [
     { id: 0, icon: <CiMoneyCheck1 />, text: "CARTÃO DE CRÉDITO" },
@@ -37,6 +39,10 @@ function Cart() {
     cartList.map((c) => {
       setValue((state) => state + parseFloat(c.product.value));
     });
+  };
+
+  const handleConfirmButton = () => {
+    navigate("/finish");
   };
 
   return (
@@ -117,7 +123,9 @@ function Cart() {
             </div>
           </div>
 
-          <button className={styles.confirm}>Confirmar pedido</button>
+          <button className={styles.confirm} onClick={() => handleConfirmButton()}>
+            Confirmar pedido
+          </button>
         </div>
       </div>
     </div>

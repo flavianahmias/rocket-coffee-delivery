@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
 import { TfiMoney } from "react-icons/tfi";
 import { GrLocation } from "react-icons/gr";
@@ -23,6 +23,7 @@ function Cart() {
   const cartList = useSelector((state) => state.cart.value);
 
   const [payMethodSelected, setPayMethodSelected] = React.useState();
+  const [value, setValue] = React.useState(0.0);
 
   const changeQuantity = (quantity, id) => {
     dispatch(incrementInCart({ quantity: quantity, id: id }));
@@ -30,6 +31,12 @@ function Cart() {
 
   const removeItem = (id) => {
     dispatch(decrement(id));
+  };
+
+  const sumValues = () => {
+    cartList.map((c) => {
+      setValue((state) => state + parseFloat(c.product.value));
+    });
   };
 
   return (
@@ -110,7 +117,7 @@ function Cart() {
             </div>
           </div>
 
-          <button>Confirmar pedido</button>
+          <button className={styles.confirm}>Confirmar pedido</button>
         </div>
       </div>
     </div>

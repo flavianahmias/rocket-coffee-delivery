@@ -10,6 +10,7 @@
   justify-content: space-between;
 
   .logo {
+    cursor: pointer;
   }
 
   .options {
@@ -43,6 +44,7 @@
       padding: 8px;
       border-radius: 6px;
       position: relative;
+      cursor: pointer;
 
       svg {
         fill: #c47f17;

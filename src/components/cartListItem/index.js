@@ -8,10 +8,11 @@ function CartListItem(props) {
 
   return (
     <div className={styles.coffeeListItem}>
-      <img src={coffee.product.image} />
+      <div className={styles.image} />
       <div className={styles.item}>
         <div className={styles.itemTitle}>
-          <p>{coffee.product.name}</p> <p>{coffee.product.value}</p>
+          <p>{coffee.product.name}</p>
+          <p className={styles.value}>{coffee.product.value}</p>
         </div>
         <div className={styles.itemActions}>
           <CounterButton

@@ -4,10 +4,9 @@ import styles from "./styles.module.scss";
 import { ReactComponent as CoffeeImage } from "../../assets/images/Imagem.svg";
 import Card from "../../components/card";
 import { coffeeList } from "./content";
-
 import { useSelector, useDispatch } from "react-redux";
-
 import { increment } from "../../features/cart/cartSlice";
+import { BsFillCartFill, BsBoxSeam, BiTimer, BiCoffee } from "../../utils/icons";
 
 function Home() {
   const count = useSelector((state) => state.cart.value.length);
@@ -27,10 +26,21 @@ function Home() {
           </span>
 
           <div className={styles.details}>
-            <p>Compra simples e segura</p>
-            <p>Entrega rápida e rastreada</p>
-            <p>Embalagem mantém o café intacto</p>
-            <p>O café chega fresquinho até você</p>
+            <p>
+              <BsFillCartFill />
+              Compra simples e segura
+            </p>
+            <p>
+              <BiTimer />
+              Entrega rápida e rastreada
+            </p>
+            <p>
+              <BsBoxSeam />
+              Embalagem mantém o café intacto
+            </p>
+            <p>
+              <BiCoffee />O café chega fresquinho até você
+            </p>
           </div>
         </div>
 

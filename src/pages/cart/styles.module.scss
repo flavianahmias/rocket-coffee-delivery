@@ -102,51 +102,54 @@
     width: 40%;
     display: flex;
     flex-direction: column;
-    border-radius: 6px 44px;
-    background-color: #f3f2f2;
+    gap: 10px;
 
     h3 {
       margin-left: 2rem;
     }
 
-    .coffees {
-      margin-top: 10px;
-      padding: 2rem;
-      box-sizing: border-box;
-    }
-
-    .values {
-      display: flex;
-      flex-direction: column;
-      padding: 0px 2rem 2rem;
-      box-sizing: border-box;
-
-      .valueContent {
-        display: flex;
-        flex-direction: row;
-
-        justify-content: space-between;
-
-        div {
-          display: flex;
-          flex-direction: column;
-
-          &:last-child {
-            align-items: flex-end;
-          }
-        }
+    .cartListContent {
+      border-radius: 6px 44px;
+      background-color: #f3f2f2;
+      .coffees {
+        margin-top: 10px;
+        padding: 2rem;
+        box-sizing: border-box;
       }
 
-      .confirm {
-        background: #dbac2c;
-        border: transparent;
-        color: white;
-        padding: 1rem 0rem;
-        border-radius: 6px;
-        font-size: 16px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        cursor: pointer;
+      .values {
+        display: flex;
+        flex-direction: column;
+        padding: 0px 2rem 2rem;
+        box-sizing: border-box;
+
+        .valueContent {
+          display: flex;
+          flex-direction: row;
+
+          justify-content: space-between;
+
+          div {
+            display: flex;
+            flex-direction: column;
+
+            &:last-child {
+              align-items: flex-end;
+            }
+          }
+        }
+
+        .confirm {
+          background: #dbac2c;
+          border: transparent;
+          color: white;
+          padding: 1rem 0rem;
+          border-radius: 6px;
+          font-size: 16px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          cursor: pointer;
+        }
       }
     }
   }

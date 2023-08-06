@@ -2,8 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 import { ReactComponent as Logo } from "../../assets/icons/Logo.svg";
-import { MdLocationPin } from "react-icons/md";
-import { BsFillCartFill } from "react-icons/bs";
+import { MdLocationPin, BsFillCartFill } from "../../utils/icons";
 import { useSelector } from "react-redux";
 
 function Header() {

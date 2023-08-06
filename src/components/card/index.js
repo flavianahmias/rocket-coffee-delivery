@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import { BsFillCartFill } from "react-icons/bs";
+import { BsFillCartFill } from "../../utils/icons";
 import Coffee from "../../assets/images/coffee.png";
 
 import { useSelector, useDispatch } from "react-redux";

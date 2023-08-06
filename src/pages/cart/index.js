@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import styles from "./styles.module.scss";
-import { TfiMoney } from "react-icons/tfi";
-import { GrLocation } from "react-icons/gr";
-import { BsTrash } from "react-icons/bs";
-import { CiMoneyCheck1 } from "react-icons/ci";
-import { PiMoneyThin } from "react-icons/pi";
-import { TbMoneybag } from "react-icons/tb";
+import {
+  TfiMoney,
+  GrLocation,
+  CiMoneyCheck1,
+  PiMoneyThin,
+  TbMoneybag,
+} from "../../utils/icons";
 import { useSelector, useDispatch } from "react-redux";
-import CounterButton from "../../components/counterButton";
 import { decrement, incrementInCart } from "../../features/cart/cartSlice";
 import CartListItem from "../../components/cartListItem";
 import { useNavigate } from "react-router-dom";
@@ -28,12 +28,7 @@ function Cart() {
   const [payMethodSelected, setPayMethodSelected] = React.useState();
   const [value, setValue] = React.useState(0.0);
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
 
   const changeQuantity = (quantity, id) => {
@@ -127,7 +122,9 @@ function Cart() {
                 <button
                   key={i}
                   className={payMethodSelected === b.id && styles.select}
-                  onClick={() => setPayMethodSelected(b.id)}
+                  onClick={() => {
+                    setPayMethodSelected(b.id);
+                  }}
                 >
                   {b.icon} <span>{b.text}</span>
                 </button>
@@ -138,35 +135,40 @@ function Cart() {
       </div>
       <div className={styles.cartList}>
         <h3>Cafés selecionados</h3>
-        <div className={styles.coffees}>
-          {cartList.map((coffee, index) => {
-            return (
-              <CartListItem
-                key={index}
-                coffee={coffee}
-                changeQuantity={changeQuantity}
-                removeItem={removeItem}
-              />
-            );
-          })}
-        </div>
-        <div className={styles.values}>
-          <div className={styles.valueContent}>
-            <div>
-              <p>Total de itens</p>
-              <p>Entrega</p>
-              <p>Total</p>
-            </div>
-            <div>
-              <p>38</p>
-              <p>2</p>
-              <p>33</p>
-            </div>
+        <div className={styles.cartListContent}>
+          <div className={styles.coffees}>
+            {cartList.map((coffee, index) => {
+              return (
+                <CartListItem
+                  key={index}
+                  coffee={coffee}
+                  changeQuantity={changeQuantity}
+                  removeItem={removeItem}
+                />
+              );
+            })}
           </div>
+          <div className={styles.values}>
+            <div className={styles.valueContent}>
+              <div>
+                <p>Total de itens</p>
+                <p>Entrega</p>
+                <p>Total</p>
+              </div>
+              <div>
+                <p>38</p>
+                <p>2</p>
+                <p>33</p>
+              </div>
+            </div>
 
-          <button className={styles.confirm} onClick={handleSubmit(handleConfirmButton)}>
-            Confirmar pedido
-          </button>
+            <button
+              className={styles.confirm}
+              onClick={handleSubmit(handleConfirmButton)}
+            >
+              Confirmar pedido
+            </button>
+          </div>
         </div>
       </div>
     </div>
